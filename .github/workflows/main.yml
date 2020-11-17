@@ -22,8 +22,8 @@ jobs:
       # Set an output parameter `uname` for use in subsequent steps
           run: |
             mkdir build && cd ./build
-            cmake ..
-            make
+            cmake .. cmake .. -DCPACK_GENERATOR="DEB" ..
+            cmake --build . --target package
             echo ::set-output name=uname::$(ls)
 
 
