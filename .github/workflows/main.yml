@@ -1,5 +1,3 @@
-name: Build
-
 on: [push, pull_request]
 
 jobs:
@@ -19,19 +17,13 @@ jobs:
           # Not required, but speeds up builds by storing container images in
           # a GitHub package registry.
           githubToken: ${{ github.token }}
-          install: sudo apt-get update && sudo apt-get install g++ cmake extra-cmake-modules qttools5-dev qttools5-dev-tools libsdl2-dev libxi-dev libxtst-dev libx11-dev itstool gettext libqt5x11extras5-dev
 
           # Set an output parameter `uname` for use in subsequent steps
           run: |
             uname -a
-            ls
-            pwd
-            mkdir build && cd ./build
-            cmake ..
-            make
             echo ::set-output name=uname::$(uname -a)
 
       - name: Get the output
         # Echo the `uname` output parameter from the `runcmd` step
         run: |
-          echo "The output was ${{ steps.runcmd.outputs.uname }}"
+          echo "The uname output was ${{ steps.runcmd.outputs.uname }}"
