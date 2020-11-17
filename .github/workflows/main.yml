@@ -18,7 +18,7 @@ jobs:
           # a GitHub package registry.
           githubToken: ${{ github.token }}
           
-          install: apt-get update -q -y && apt-get install g++ cmake extra-cmake-modules qttools5-dev qttools5-dev-tools libsdl2-dev libxi-dev libxtst-dev libx11-dev itstool gettext libqt5x11extras5-dev
+          install: apt-get update -q -y && apt-get -q -y install g++ cmake extra-cmake-modules qttools5-dev qttools5-dev-tools libsdl2-dev libxi-dev libxtst-dev libx11-dev itstool gettext libqt5x11extras5-dev
       # Set an output parameter `uname` for use in subsequent steps
           run: |
             uname -a
