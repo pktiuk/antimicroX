@@ -37,3 +37,13 @@ jobs:
         # Echo the `uname` output parameter from the `runcmd` step
         run: |
           echo "The uname output was ${{ steps.runcmd.outputs.uname }}"
+      - name: Show the artifact
+        # Items placed in /artifacts in the container will be in
+        # ${PWD}/artifacts on the host.
+        run: |
+          ls -al "${PWD}/artifacts"
+      - name: Upload binaries to release
+        uses: AButler/upload-release-assets@v2.0
+        with:
+          files: "${PWD}/artifacts/*.deb"
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
