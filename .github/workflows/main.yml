@@ -45,6 +45,7 @@ jobs:
           ls -al "${PWD}/artifacts"
           mkdir art
           cp "${PWD}"/artifacts/*.deb art/
+          cp "${PWD}"/artifacts/*.log art/
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
